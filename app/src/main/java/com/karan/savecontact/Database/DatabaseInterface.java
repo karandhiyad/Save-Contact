@@ -42,8 +42,8 @@ public interface DatabaseInterface {
     @Query("select * from TBLContact")
     LiveData<List<TBLContact>> getLiveTBLContact();
 
-    @Query("update TBLContact set firstname = :FirstName, lastname = :LastName, mobileNumber = :NewMobileNumber , email = :Email , category = :Category where mobilenumber = :MobileNumber")
-    void updateTBLContact (String FirstName, String LastName, String NewMobileNumber, String Email,String Category, String MobileNumber);
+    @Query("update TBLContact set firstname = :FirstName, lastname = :LastName, mobileNumber = :NewMobileNumber , email = :Email , category = :Category, image = :Image where mobilenumber = :MobileNumber")
+    void updateTBLContact (String FirstName, String LastName, String NewMobileNumber, String Email,String Category,String Image, String MobileNumber);
 
     @Query("select * from TBLContact where category = :Category")
     List<TBLContact> getTBLContactCategory(String Category);

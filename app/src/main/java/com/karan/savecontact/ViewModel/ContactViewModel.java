@@ -56,12 +56,16 @@ public class ContactViewModel extends AndroidViewModel {
         return databaseHelper.databaseInterface().getTBLContact();
     }
 
+    public List<TBLContact> getTBLContactCategory(String Category){
+        return databaseHelper.databaseInterface().getTBLContactCategory(Category);
+    }
+
     public LiveData<List<TBLContact>> getLiveTBLContact(){
         return databaseHelper.databaseInterface().getLiveTBLContact();
     }
 
-    public void updateTBLContact(String FirstName, String LastName, String NewMobileNumber, String Email, String Category, String MobileNumber){
-        databaseHelper.databaseInterface().updateTBLContact(FirstName,LastName,NewMobileNumber,Email,Category,MobileNumber);
+    public void updateTBLContact(String FirstName, String LastName, String NewMobileNumber, String Email, String Category,String Image, String MobileNumber){
+        databaseHelper.databaseInterface().updateTBLContact(FirstName,LastName,NewMobileNumber,Email,Category,Image,MobileNumber);
     }
 
     public List<TBLContact> getTBLContactByMobileNumber(String MobileNumber){

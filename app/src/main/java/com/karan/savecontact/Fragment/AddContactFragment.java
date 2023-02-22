@@ -109,7 +109,6 @@ public class AddContactFragment extends Fragment {
 
     private void ImagePicker(){
         ImagePicker.with(this)
-                .galleryOnly()
                 .cropSquare()	//Crop square image, its same as crop(1f, 1f)
                 .compress(1024)			//Final image size will be less than 1 MB(Optional)
                 .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)

@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import com.karan.savecontact.Adapter.CategoryAdapter;
 import com.karan.savecontact.Adapter.ContactAdapter;
@@ -33,6 +35,7 @@ public class ContactListFragment extends Fragment {
 
     private FragmentContactListBinding bindings;
     private ContactViewModel contactViewModel;
+    private ArrayList<String> CategoryList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +51,7 @@ public class ContactListFragment extends Fragment {
 
         ContactAdapter contactAdapter = new ContactAdapter(getContext());
         contactAdapter.SetContact((ArrayList<TBLContact>) contactViewModel.getTBLContact());
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
         bindings.rvContactList.setAdapter(contactAdapter);
         bindings.rvContactList.setLayoutManager(gridLayoutManager);
 
@@ -56,6 +59,52 @@ public class ContactListFragment extends Fragment {
             @Override
             public void onChanged(List<TBLContact> tblContacts) {
                 contactAdapter.SetContact((ArrayList<TBLContact>) tblContacts);
+            }
+        });
+
+        ArrayList<TBLCategory> tblCategories = (ArrayList<TBLCategory>) contactViewModel.getTBLCategory();
+
+        for (TBLCategory tblCategory : tblCategories) {
+            CategoryList.add(tblCategory.getCategory());
+        }
+
+        //Spinner Adapter
+        ArrayAdapter<String> wifiAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, CategoryList);
+
+        // Drop down layout style - list view with radio button
+        wifiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        binding.appBarHome.spCategory.setAdapter(wifiAdapter);
+
+        binding.appBarHome.igFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.appBarHome.spCategoryCard.getVisibility() == View.GONE) {
+                    binding.appBarHome.spCategoryCard.setVisibility(View.VISIBLE);
+                    binding.appBarHome.txToolbarTitle.setVisibility(View.GONE);
+
+                    contactAdapter.SetContact((ArrayList<TBLContact>) contactViewModel.getTBLContactCategory(binding.appBarHome.spCategory.getSelectedItem().toString()));
+
+                } else {
+                    binding.appBarHome.spCategoryCard.setVisibility(View.GONE);
+                    binding.appBarHome.txToolbarTitle.setVisibility(View.VISIBLE);
+
+                    contactAdapter.SetContact((ArrayList<TBLContact>) contactViewModel.getTBLContact());
+                }
+            }
+        });
+
+
+        binding.appBarHome.spCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                contactAdapter.SetContact((ArrayList<TBLContact>) contactViewModel.getTBLContactCategory(binding.appBarHome.spCategory.getSelectedItem().toString()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 

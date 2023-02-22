@@ -52,6 +52,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/spCategoryCard"
+                android:layout_width="@dimen/_100mdp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8mdp"
+                android:visibility="gone"
+                android:background="@drawable/border_line"
+                android:minWidth="@dimen/_250mdp"
+                app:cardCornerRadius="@dimen/_5mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/igFilter"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Spinner
+                    android:id="@+id/spCategory"
+                    android:layout_width="@dimen/_100mdp"
+                    android:layout_height="@dimen/_30mdp"
+                    android:minWidth="@dimen/_250mdp" />
+
+            </androidx.cardview.widget.CardView>
+
             <ImageView
                 android:id="@+id/igFilter"
                 android:layout_width="@dimen/_20mdp"
