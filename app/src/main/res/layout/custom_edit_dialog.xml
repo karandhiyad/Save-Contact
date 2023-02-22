@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_4mdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <EditText
+        android:id="@+id/etAddCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_16mdp"
+        android:minWidth="@dimen/_250mdp"
+        android:hint="Add Category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/llBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_4mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddCategory">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbar_color"
+            android:layout_margin="@dimen/_2mdp"
+            android:minWidth="@dimen/_150mdp"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14mdp"
+            app:layout_constraintEnd_toEndOf="@+id/etAddCategory"
+            app:layout_constraintStart_toStartOf="@+id/etAddCategory"
+            app:layout_constraintTop_toBottomOf="@+id/etAddCategory" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbar_color"
+            android:layout_margin="@dimen/_2mdp"
+            android:minWidth="@dimen/_150mdp"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14mdp"
+            app:layout_constraintEnd_toEndOf="@+id/etAddCategory"
+            app:layout_constraintStart_toStartOf="@+id/etAddCategory"
+            app:layout_constraintTop_toBottomOf="@+id/etAddCategory" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
